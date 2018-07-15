@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+#game-board {
+  width: 100%;
+  background-color: cyan;
+  border-radius: 10px;
+}
+
+.card {
+  width: 20%;
+  height: 40px;
+  background-color: slategray;
+}
+
+h1 {
+  font: 20pt sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
