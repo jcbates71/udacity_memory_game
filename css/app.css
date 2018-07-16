@@ -31,6 +31,15 @@
   background-color: slategray;
 }
 
+.card-display {
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 30pt;
+  margin: auto;
+}
+
 h1 {
   font: 20pt sans-serif;
   text-align: center;
