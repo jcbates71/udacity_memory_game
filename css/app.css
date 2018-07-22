@@ -29,7 +29,22 @@
   display: inherit;
   flex-grow: 1;
   margin: 1em;
+}
+
+.back {
+  display: inherit;
+  flex-grow: 1;
   background-color: slategray;
+}
+
+.front {
+  display: inherit;
+  flex-grow: 1;
+  background-color: #f9f0ca;
+}
+
+.hidden {
+  display: none;
 }
 
 .card-display {
