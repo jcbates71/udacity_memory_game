@@ -1,5 +1,6 @@
-const symbolList = ['1', '1', '2', '2', '3', '3', '4' '4', '5', '5', '6', '6', '7', '7', '8', '8'];
+const symbolList = ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8'];
 const cardList = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
+var cardLocations;
 var score;
 
 function reset() {
@@ -26,5 +27,10 @@ function flipAllCardsToBack() {
 }
 
 function shuffleCards() {
-
+  cardLocations = new Map();
+  var unusedCards = symbolList;
+  for (card of cardList) {
+    var randomCard = Math.floor(Math.random() * unusedCards.length);
+    cardLocations.set(card, unusedCards.splice(randomCard, 1)[0]);
+  }
 }
