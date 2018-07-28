@@ -35,8 +35,8 @@ function shuffleCards() {
   }
 }
 
-function selectCard {
-  
+function selectCard(e) {
+
 }
 
 function addEventListeners() {
