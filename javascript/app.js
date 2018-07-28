@@ -35,6 +35,10 @@ function shuffleCards() {
   }
 }
 
+function selectCard {
+  
+}
+
 function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board', selectCard);
