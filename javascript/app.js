@@ -34,3 +34,13 @@ function shuffleCards() {
     cardLocations.set(card, unusedCards.splice(randomCard, 1)[0]);
   }
 }
+
+function addEventListeners() {
+  document.getElementById('reset-button').addEventListener('click', reset);
+  document.getElementById('game-board', selectCard);
+}
+
+function main() {
+  reset();
+  addEventListeners();
+}
