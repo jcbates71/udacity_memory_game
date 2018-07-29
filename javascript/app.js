@@ -53,10 +53,16 @@ function flipCard(selectedCard) {
 
 function checkSelectedCards() {
   var matched = cardLocations.get(selected[0].id) == cardLocations.get(selected[1].id);
+  var newClass;
   if (matched) {
-
+    newClass = 'matched';
   } else {
-
+    newClass = 'back';
+    score++;
+    document.getElementById('score-number').innertText = score;
+  }
+  while (selected.length > 0) {
+    selected[0].classList.replace('selected', newClass);
   }
 }
 
