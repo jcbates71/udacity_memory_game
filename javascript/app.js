@@ -2,10 +2,9 @@ const symbolList = ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', 
 const cardList = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 var cardLocations;
 var score;
-var selected;
+var selected = document.getElementsByClassName('selected');
 
 function reset() {
-  selected = new Array();
   setScore(0);
   flipAllCardsToBack();
   shuffleCards();
@@ -50,13 +49,12 @@ function selectCard(e) {
 function flipCard(selectedCard) {
   selectedCard.className = 'card selected'
   selectedCard.getElementsByClassName('card-display')[0].innerText = cardLocations.get(selectedCard.id);
-  selected.push(selectedCard.id);
 }
 
 function checkSelectedCards() {
-  var matched = cardLocations.get(selected[0]) == cardLocations.get(selected[1]);
+  var matched = cardLocations.get(selected[0].id) == cardLocations.get(selected[1].id);
   if (matched) {
-    
+
   } else {
 
   }
