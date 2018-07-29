@@ -22,7 +22,7 @@ function flipAllCardsToBack() {
   }
   var allCards = document.getElementsByClassName('card');
   for (let card of allCards) {
-    card.classList.remove('front', 'selected', 'correct');
+    card.classList.remove('selected', 'matched');
     card.classList.add('back');
   }
 }
