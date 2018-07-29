@@ -39,8 +39,8 @@ function shuffleCards() {
 
 function selectCard(e) {
   var selectedCart = e.target;
-  if (selectCard.className == 'card back') {
-    flipCard(selectCard);
+  if (selectedCard.className == 'card back') {
+    flipCard(selectedCard);
     if (selected.length == 2) {
       checkSelectedCards();
     }
