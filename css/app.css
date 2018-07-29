@@ -52,14 +52,10 @@ body {
 }
 
 .back {
-  display: inherit;
-  flex-grow: 1;
   background-color: slategray;
 }
 
 .matched, .selected {
-  display: inherit;
-  flex-grow: 1;
   background-color: #f9f0ca;
 }
 
