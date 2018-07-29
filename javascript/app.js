@@ -54,7 +54,12 @@ function flipCard(selectedCard) {
 }
 
 function checkSelectedCards() {
+  var matched = cardLocations.get(selected[0]) == cardLocations.get(selected[1]);
+  if (matched) {
+    
+  } else {
 
+  }
 }
 
 function addEventListeners() {
