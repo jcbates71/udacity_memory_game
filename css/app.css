@@ -55,8 +55,16 @@ body {
   background-color: slategray;
 }
 
-.matched, .selected {
+.selected {
   background-color: #f9f0ca;
+}
+
+.matched {
+  background-color: #b7ffc5;
+}
+
+.selected .card-display,.matched .card-display {
+  color: black;
 }
 
 .card-display {
