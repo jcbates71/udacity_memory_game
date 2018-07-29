@@ -48,3 +48,5 @@ function main() {
   reset();
   addEventListeners();
 }
+
+document.addEventListener('DOMContentLoaded', main);
