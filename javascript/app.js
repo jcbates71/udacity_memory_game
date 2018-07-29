@@ -59,9 +59,12 @@ function checkSelectedCards() {
   } else {
     newClass = 'back';
     score++;
-    document.getElementById('score-number').innertText = score;
+    document.getElementById('score-number').innerText = score;
   }
   while (selected.length > 0) {
+    if (newClass == 'back') {
+      selected[0].getElementsByClassName('card-display')[0].innerText = "?";
+    }
     selected[0].classList.replace('selected', newClass);
   }
 }
