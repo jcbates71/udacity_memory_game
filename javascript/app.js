@@ -47,6 +47,14 @@ function selectCard(e) {
   }
 }
 
+function flipCard(selectCard) {
+
+}
+
+function checkSelectedCards() {
+  
+}
+
 function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board').addEventListener('click', selectCard);
