@@ -39,7 +39,7 @@ function shuffleCards() {
 
 function selectCard(e) {
   var selectedCart = e.target;
-  if (selectCard.classList.contains('card') && !selected.includes(selectCard.id)) {
+  if (selectCard.className == 'card back') {
     flipCard(selectCard);
     if (selected.length == 2) {
       checkSelectedCards();
@@ -52,7 +52,7 @@ function flipCard(selectCard) {
 }
 
 function checkSelectedCards() {
-  
+
 }
 
 function addEventListeners() {
