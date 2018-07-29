@@ -41,7 +41,7 @@ function selectCard(e) {
   if (selectedCard.className == 'card back') {
     flipCard(selectedCard);
     if (selected.length == 2) {
-      checkSelectedCards();
+      setTimeout(checkSelectedCards, 1000);
     }
   }
 }
