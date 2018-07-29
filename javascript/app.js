@@ -47,8 +47,10 @@ function selectCard(e) {
   }
 }
 
-function flipCard(selectCard) {
-
+function flipCard(selectedCard) {
+  selectedCard.className = 'card selected'
+  selectedCard.getElementsByClassName('card-display')[0].innerText = cardLocations.get(selectedCard.id);
+  selected.push(selectedCard.id);
 }
 
 function checkSelectedCards() {
