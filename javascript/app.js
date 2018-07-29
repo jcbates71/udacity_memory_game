@@ -41,7 +41,7 @@ function selectCard(e) {
 
 function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
-  document.getElementById('game-board', selectCard);
+  document.getElementById('game-board').addEventListener('click', selectCard);
 }
 
 function main() {
