@@ -11,7 +11,7 @@ function reset() {
 
 function setScore(newScore) {
   score = newScore;
-  document.getElementById('score').textContent = score;
+  document.getElementById('score-number').textContent = score;
 }
 
 function flipAllCardsToBack() {
