@@ -57,7 +57,7 @@ body {
   background-color: slategray;
 }
 
-.front {
+.matched, .selected {
   display: inherit;
   flex-grow: 1;
   background-color: #f9f0ca;
