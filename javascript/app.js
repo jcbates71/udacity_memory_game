@@ -48,6 +48,7 @@ function selectCard(e) {
     flipCard(selectedCard);
     if (selected.length == 2) {
       setTimeout(checkSelectedCards, 1000);
+      checkGameOver();
     }
   }
 }
@@ -72,6 +73,14 @@ function checkSelectedCards() {
       selected[0].getElementsByClassName('card-display')[0].innerHTML = "?";
     }
     selected[0].classList.replace('selected', newClass);
+  }
+}
+
+function checkGameOver() {
+  if (document.getElementsByClassName('back').length == 0) {
+    flashGameBoard();
+    displayEndMessage();
+    animateResetButton();
   }
 }
 
