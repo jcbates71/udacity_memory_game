@@ -41,6 +41,7 @@ body {
   display: inherit;
   flex-direction: row;
   flex-grow: 1;
+  flex-basis: 0;
   align-content: space-between;
   justify-content: space-between;
 }
