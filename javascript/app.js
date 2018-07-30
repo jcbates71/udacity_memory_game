@@ -1,4 +1,4 @@
-const symbolList = ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8'];
+const symbolList = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#9734;', '&#9742;', '&#9742;', '&#9760;', '&#9760;', '&#9775;', '&#9775;', '&#9816;', '&#9816;', '&#9836;', '&#9836;'];
 const cardList = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 var cardLocations;
 var score;
@@ -51,7 +51,7 @@ function selectCard(e) {
 
 function flipCard(selectedCard) {
   selectedCard.className = 'card selected'
-  selectedCard.getElementsByClassName('card-display')[0].innerText = cardLocations.get(selectedCard.id);
+  selectedCard.getElementsByClassName('card-display')[0].innerHTML = cardLocations.get(selectedCard.id);
 }
 
 function checkSelectedCards() {
@@ -66,7 +66,7 @@ function checkSelectedCards() {
   }
   while (selected.length > 0) {
     if (newClass == 'back') {
-      selected[0].getElementsByClassName('card-display')[0].innerText = "?";
+      selected[0].getElementsByClassName('card-display')[0].innerHTML = "?";
     }
     selected[0].classList.replace('selected', newClass);
   }
