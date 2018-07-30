@@ -84,6 +84,18 @@ function checkGameOver() {
   }
 }
 
+function flashGameBoard() {
+
+}
+
+function displayEndMessage() {
+
+}
+
+function animateResetButton() {
+  
+}
+
 function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board').addEventListener('click', selectCard);
