@@ -51,6 +51,9 @@ body {
   flex-grow: 1;
   flex-basis: 0;
   margin: 1em;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
 }
 
 .back {
@@ -74,7 +77,7 @@ body {
   text-align: center;
   vertical-align: middle;
   font-family: 'Fredericka the Great', cursive;
-  font-size: 30pt;
+  font-size: 42pt;
   margin: auto;
 }
 
