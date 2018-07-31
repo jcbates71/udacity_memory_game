@@ -78,32 +78,14 @@ function checkSelectedCards() {
 
 function checkGameOver() {
   if (document.getElementsByClassName('back').length == 0) {
-    // flashGameBoard();
+    flashGameBoard();
     displayEndMessage();
     animateResetButton();
   }
 }
 
 function flashGameBoard() {
-  for (var i = 0; i < 3; i++) {
-    setTimeout(reverseGameBoardColors, 500);
-    setTimeout(reverseGameBoardColors, 500);
-  }
-}
-
-function reverseGameBoardColors() {
-  var card = document.querySelector('.matched');
-  var board = document.querySelector('#game-board');
-  var cardColor = card.style.backgroundColor;
-  var boardColor = board.style.backgroundColor;
-  if (!cardColor) {
-    cardColor = '#b7ffc5';
-  }
-  if (!boardColor) {
-    boardColor = '#cffCf8';
-  }
-  card.style.backgroundColor = boardColor;
-  board.style.backgroundColor = cardColor;
+  document.getElementById('game-board').classList.add('board-winner');
 }
 
 function displayEndMessage() {

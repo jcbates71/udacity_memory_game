@@ -37,6 +37,23 @@ body {
   box-shadow: 10px 10px 15px 3px lightgray;
 }
 
+@keyframes flashing-board {
+  from {
+    background-color: #cffcf8;
+  }
+  to {
+    background-color: #ffa0a0;
+  }
+}
+
+.board-winner {
+  animation-name: flashing-board;
+  animation-delay: 1s;
+  animation-duration: 50ms;
+  animation-iteration-count: 10;
+  animation-direction: alternate;
+}
+
 .board-row {
   display: inherit;
   flex-direction: row;
