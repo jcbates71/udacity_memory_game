@@ -79,17 +79,12 @@ function checkSelectedCards() {
 function checkGameOver() {
   if (document.getElementsByClassName('back').length == 0) {
     flashGameBoard();
-    displayEndMessage();
     animateResetButton();
   }
 }
 
 function flashGameBoard() {
   document.getElementById('game-board').classList.add('board-winner');
-}
-
-function displayEndMessage() {
-
 }
 
 function animateResetButton() {
