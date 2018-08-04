@@ -30,16 +30,16 @@ function flipAllCardsToBack() {
 
 function shuffleCards() {
   cardLocations = new Map();
-  var unusedCards = symbolList;
-  for (card of cardList) {
+  var unusedCards = symbolList.slice();
+  for (let card of cardList) {
     var randomCard = Math.floor(Math.random() * unusedCards.length);
     cardLocations.set(card, unusedCards.splice(randomCard, 1)[0]);
   }
 }
 
 function turnOffGameWinners() {
-  document.getElementById('game-board').classList.remove('flashing-board');
-  document.getElementById('reset-button')classList.remove('flashing-reset');
+  document.getElementById('game-board').classList.remove('board-winner');
+  document.getElementById('reset-button').classList.remove('reset-winner');
 }
 
 function selectCard(e) {
