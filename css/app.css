@@ -19,7 +19,20 @@ body {
 #control p {
   font: 12pt sans-serif;
   font-weight: bold;
+  color: black;
   margin: .25em;
+}
+
+@keyframes flashing-reset {
+  0% {color: black;}
+  50% {color: red;}
+  100% {color: black;}
+}
+
+.reset-winner p {
+  animation: flashing-reset;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 
 #game-board {

@@ -88,7 +88,7 @@ function flashGameBoard() {
 }
 
 function animateResetButton() {
-
+  document.getElementById('reset-button').classList.add('reset-winner');
 }
 
 function addEventListeners() {
