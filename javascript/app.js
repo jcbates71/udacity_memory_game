@@ -8,6 +8,7 @@ function reset() {
   setScore(0);
   flipAllCardsToBack();
   shuffleCards();
+  turnOffGameWinners();
 }
 
 function setScore(newScore) {
@@ -34,6 +35,11 @@ function shuffleCards() {
     var randomCard = Math.floor(Math.random() * unusedCards.length);
     cardLocations.set(card, unusedCards.splice(randomCard, 1)[0]);
   }
+}
+
+function turnOffGameWinners() {
+  document.getElementById('game-board').classList.remove('flashing-board');
+  document.getElementById('reset-button')classList.remove('flashing-reset');
 }
 
 function selectCard(e) {
