@@ -18,9 +18,9 @@ function setScore(newScore) {
   if (score < 6) {
     star_html = "<span class='good-stars'>&#9733;&#9733;&#9733;</span>";
   } else if (score < 11) {
-    star_html = "<span class='good-stars'>&#9733;&#9733;</span>&#9734;";
+    star_html = "<span class='good-stars'>&#9733;&#9733;</span>&#9733;";
   } else {
-    star_html = "<span class='good-stars'>&#9733;</span>&#9734;&#9734;";
+    star_html = "<span class='good-stars'>&#9733;</span>&#9733;&#9733;";
   }
   document.getElementById('score-stars').innerHTML = star_html;
 }
