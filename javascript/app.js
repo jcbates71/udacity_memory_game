@@ -13,17 +13,15 @@ function reset() {
 
 function setScore(newScore) {
   score = newScore;
-  console.log(score);
   document.getElementById('score-number').textContent = score;
   var star_html;
   if (score < 6) {
-    star_html = "&#9733;&#9733;&#9733;";
+    star_html = "<span class='good-stars'>&#9733;&#9733;&#9733;</span>";
   } else if (score < 11) {
-    star_html = "&#9733;&#9733;&#9734;";
+    star_html = "<span class='good-stars'>&#9733;&#9733;</span>&#9734;";
   } else {
-    star_html = "&#9733;&#9734;&#9734;";
+    star_html = "<span class='good-stars'>&#9733;</span>&#9734;&#9734;";
   }
-  console.log(star_html);
   document.getElementById('score-stars').innerHTML = star_html;
 }
 

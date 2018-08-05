@@ -23,7 +23,7 @@ body {
   margin: .25em;
 }
 
-#score-stars {
+.good-stars {
   color: gold;
   text-shadow: 0px 0px 2px blue;
 }
