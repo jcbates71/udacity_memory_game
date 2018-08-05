@@ -3,7 +3,7 @@
 }
 
 body {
-  width: 100%;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -17,7 +17,7 @@ body {
 }
 
 #control p {
-  font: 18pt sans-serif;
+  font: 12pt sans-serif;
   font-weight: bold;
   color: black;
   margin: .25em;
@@ -44,8 +44,8 @@ body {
   width: 100%;
   height: 80vh;
   background-color: #cffcf8;
-  border-radius: 15px;
-  padding: 1em;
+  /* border-radius: 15px; */
+  padding: .5em;
   margin: auto;
   /* box-shadow: 10px 10px 15px 3px lightgray; */
 }
@@ -80,7 +80,7 @@ body {
   display: inherit;
   flex-grow: 1;
   flex-basis: 0;
-  margin: 1em;
+  margin: .5em;
   border-style: solid;
   border-width: thin;
   border-color: black;
@@ -112,7 +112,30 @@ body {
 }
 
 h1 {
-  font: 30pt sans-serif;
+  margin: 0;
+  font: 20pt sans-serif;
   text-align: center;
   text-transform: uppercase;
+}
+
+@media screen and (min-width: 600px) {
+  #control p {
+    font-size: 16pt
+  }
+  #game-board {
+    border-radius: 15px;
+    padding: .75em;
+    width: 90%;
+    box-shadow: 5px 5px 10px 3px lightgray;
+  }
+  .card {
+    margin: .75em;
+  }
+  .card-display {
+    font-size: 40pt
+  }
+  h1 {
+    font-size: 25pt;
+    margin: .25em;
+  }
 }
