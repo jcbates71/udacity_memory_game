@@ -13,7 +13,18 @@ function reset() {
 
 function setScore(newScore) {
   score = newScore;
+  console.log(score);
   document.getElementById('score-number').textContent = score;
+  var star_html;
+  if (score < 6) {
+    star_html = "&#9733;&#9733;&#9733;";
+  } else if (score < 11) {
+    star_html = "&#9733;&#9733;&#9734;";
+  } else {
+    star_html = "&#9733;&#9734;&#9734;";
+  }
+  console.log(star_html);
+  document.getElementById('score-stars').innerHTML = star_html;
 }
 
 function flipAllCardsToBack() {
@@ -71,9 +82,8 @@ function checkSelectedCards() {
     newClass = 'matched';
   } else {
     newClass = 'back';
-    score++;
-    document.getElementById('score-number').innerText = score;
   }
+  setScore(score + 1);
   while (selected.length > 0) {
     if (newClass == 'back') {
       selected[0].getElementsByClassName('card-display')[0].innerHTML = "?";

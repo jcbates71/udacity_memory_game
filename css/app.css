@@ -23,6 +23,11 @@ body {
   margin: .25em;
 }
 
+#score-stars {
+  color: gold;
+  text-shadow: 0px 0px 2px blue;
+}
+
 @keyframes flashing-reset {
   0% {color: black;}
   50% {color: red;}
