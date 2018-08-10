@@ -16,9 +16,15 @@ body {
   width: 100%;
 }
 
+#control div {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
 #control p {
   font: 12pt sans-serif;
   font-weight: bold;
+  text-align: center;
   color: black;
   margin: .25em;
 }
