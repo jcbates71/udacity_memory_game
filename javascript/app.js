@@ -2,6 +2,7 @@ const symbolList = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#97
 const cardList = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 var cardLocations;
 var score;
+var startTime, currentTime, myTimer;
 var selected = document.getElementsByClassName('selected');
 
 function reset() {
@@ -9,6 +10,7 @@ function reset() {
   flipAllCardsToBack();
   shuffleCards();
   turnOffGameWinners();
+  document.getElementById('timer').innerText = '0:00';
 }
 
 function setScore(newScore) {
@@ -52,6 +54,9 @@ function turnOffGameWinners() {
 }
 
 function selectCard(e) {
+  if (!startTime) {
+    startTime = new Date();
+  }
   if (selected.length == 2) {
     return;
   }
@@ -92,6 +97,7 @@ function checkSelectedCards() {
 
 function checkGameOver() {
   if (document.getElementsByClassName('back').length == 0) {
+    clearInterval(myTimer);
     flashGameBoard();
     animateResetButton();
   }
@@ -105,9 +111,24 @@ function animateResetButton() {
   document.getElementById('reset-button').classList.add('reset-winner');
 }
 
+function updateTimer() {
+  if (startTime) {
+    currentTime = new Date();
+    var duration = Math.floor((currentTime - startTime) / 1000);
+    var minutes = String(Math.floor(duration / 60));
+    var seconds = String(duration % 60);
+    if (seconds.length == 1) {
+      seconds = "0" + seconds;
+    }
+    var timerText = minutes + ":" + seconds;
+    document.getElementById('timer').innerText = timerText;
+  }
+}
+
 function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board').addEventListener('click', selectCard);
+  myTimer = setInterval(updateTimer, 100);
 }
 
 function main() {
