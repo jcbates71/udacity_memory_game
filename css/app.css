@@ -22,7 +22,7 @@ body {
 }
 
 #control p {
-  font: 12pt sans-serif;
+  font: 10pt sans-serif;
   font-weight: bold;
   text-align: center;
   color: black;
@@ -47,7 +47,7 @@ body {
 
 .reset-winner p {
   animation: flashing-reset;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
 }
 
@@ -135,6 +135,10 @@ h1 {
 }
 
 @media screen and (min-width: 600px) {
+  #control {
+    width: 90%;
+    margin: auto;
+  }
   #control p {
     font-size: 16pt
   }
