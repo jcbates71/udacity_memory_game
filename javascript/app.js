@@ -66,16 +66,26 @@ function selectCard(e) {
   }
   if (selectedCard.className == 'card back') {
     flipCard(selectedCard);
-    if (selected.length == 2) {
-      setTimeout(checkSelectedCards, 1000);
-      checkGameOver();
-    }
   }
 }
 
 function flipCard(selectedCard) {
-  selectedCard.className = 'card selected'
-  selectedCard.getElementsByClassName('card-display')[0].innerHTML = cardLocations.get(selectedCard.id);
+  selectedCard.classList.add('card-flip');
+}
+
+function finishFlipCard(e) {
+  if (e.target.classList.contains('card')) {
+    if (e.animationName == 'flip-to') {
+      e.target.getElementsByClassName('card-display')[0].innerHTML = cardLocations.get(e.target.id);
+      e.target.classList.replace('back', 'selected');
+    } else if (e.animationName == 'flip-back') {
+      e.target.classList.remove('card-flip');
+      if (selected.length == 2) {
+        setTimeout(checkSelectedCards, 1000);
+        checkGameOver();
+      }
+    }
+  }
 }
 
 function checkSelectedCards() {
@@ -128,6 +138,7 @@ function updateTimer() {
 function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board').addEventListener('click', selectCard);
+  document.getElementById('game-board').addEventListener('animationend', finishFlipCard);
   myTimer = setInterval(updateTimer, 100);
 }
 

@@ -118,6 +118,28 @@ body {
   color: black;
 }
 
+@keyframes flip-to {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(.25turn);
+  }
+}
+
+@keyframes flip-back {
+  from {
+    transform: rotateY(.25turn);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+
+.card-flip {
+  animation: .3s flip-to, .3s linear .3s flip-back;
+}
+
 .card-display {
   color: white;
   text-align: center;
