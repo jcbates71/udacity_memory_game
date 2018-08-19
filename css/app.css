@@ -112,6 +112,7 @@ body {
 
 .matched {
   background-color: #b7ffc5;
+  animation: .4s ease-in correct;
 }
 
 .selected .card-display,.matched .card-display {
@@ -137,7 +138,26 @@ body {
 }
 
 .card-flip {
-  animation: .2s flip-to, .2s linear .2s flip-back;
+  animation: .125s flip-to, .125s linear .125s flip-back;
+}
+
+@keyframes correct {
+  0% {
+    transform-origin: center;
+    transform: scale(1,1);
+  }
+  50% {
+    transform: scale(1.7,.7);
+  }
+  75% {
+    transform: scale(.8,1.3);
+  }
+  90% {
+    transform: scale(1.1, .9);
+  }
+  100% {
+    transform: scale(1,1);
+  }
 }
 
 .card-display {
