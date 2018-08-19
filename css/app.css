@@ -137,7 +137,7 @@ body {
 }
 
 .card-flip {
-  animation: .3s flip-to, .3s linear .3s flip-back;
+  animation: .2s flip-to, .2s linear .2s flip-back;
 }
 
 .card-display {
