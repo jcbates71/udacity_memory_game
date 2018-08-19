@@ -81,7 +81,7 @@ function finishFlipCard(e) {
     } else if (e.animationName == 'flip-back') {
       e.target.classList.remove('card-flip');
       if (selected.length == 2) {
-        setTimeout(checkSelectedCards, 1000);
+        setTimeout(checkSelectedCards, 750);
         checkGameOver();
       }
     } else if (e.animationName == 'incorrect') {
