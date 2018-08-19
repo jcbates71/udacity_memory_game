@@ -166,10 +166,10 @@ body {
     transform: translateX(0) rotate(0);
   }
   25% {
-    transform: translateX(-10%) rotate(-5deg);
+    transform: translateX(-20%) rotate(-5deg);
   }
   75% {
-    transform: translateX(10%) rotate(5deg);
+    transform: translateX(20%) rotate(5deg);
   }
   100% {
     transform: translateX(0) rotate(0);
@@ -177,7 +177,7 @@ body {
 }
 
 .incorrect-guess {
-  animation: .2s 2 incorrect, .125s .4s flip-to, .125s linear .525s flip-back;
+  animation: .25s 2 incorrect, .125s .5s flip-to, .125s linear .625s flip-back;
   background-color: red;
   transform-origin: bottom center;
 }
