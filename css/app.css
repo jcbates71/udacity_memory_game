@@ -177,7 +177,7 @@ body {
 }
 
 .incorrect-guess {
-  animation: .2s 2 incorrect;
+  animation: .2s 2 incorrect, .125s .4s flip-to, .125s linear .525s flip-back;
   background-color: red;
   transform-origin: bottom center;
 }

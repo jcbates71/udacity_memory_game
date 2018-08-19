@@ -76,18 +76,25 @@ function flipCard(selectedCard) {
 function finishFlipCard(e) {
   if (e.target.classList.contains('card')) {
     if (e.animationName == 'flip-to') {
-      e.target.getElementsByClassName('card-display')[0].innerHTML = cardLocations.get(e.target.id);
-      e.target.classList.replace('back', 'selected');
+      var newCardDisplay, oldClass, newClass;
+      if (e.target.classList.contains('incorrect-guess')) {
+        newCardDisplay = '?';
+        oldClass = 'incorrect-guess';
+        newClass = 'back';
+      } else {
+        newCardDisplay = cardLocations.get(e.target.id);
+        oldClass = 'back';
+        newClass = 'selected';
+      }
+      e.target.getElementsByClassName('card-display')[0].innerHTML = newCardDisplay;
+      e.target.classList.replace(oldClass, newClass);
     } else if (e.animationName == 'flip-back') {
       e.target.classList.remove('card-flip');
       if (selected.length == 2) {
         setTimeout(checkSelectedCards, 750);
         checkGameOver();
       }
-    } else if (e.animationName == 'incorrect') {
-      e.target.classList.replace('incorrect-guess', 'back')
-      e.target.getElementsByClassName('card-display')[0].innerHTML = "?";
-    }
+    } 
   }
 }
 
