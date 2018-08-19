@@ -84,6 +84,9 @@ function finishFlipCard(e) {
         setTimeout(checkSelectedCards, 1000);
         checkGameOver();
       }
+    } else if (e.animationName == 'incorrect') {
+      e.target.classList.replace('incorrect-guess', 'back')
+      e.target.getElementsByClassName('card-display')[0].innerHTML = "?";
     }
   }
 }
@@ -94,13 +97,10 @@ function checkSelectedCards() {
   if (matched) {
     newClass = 'matched';
   } else {
-    newClass = 'back';
+    newClass = 'incorrect-guess';
   }
   setScore(score + 1);
   while (selected.length > 0) {
-    if (newClass == 'back') {
-      selected[0].getElementsByClassName('card-display')[0].innerHTML = "?";
-    }
     selected[0].classList.replace('selected', newClass);
   }
 }

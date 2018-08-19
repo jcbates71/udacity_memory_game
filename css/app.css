@@ -161,6 +161,27 @@ body {
   }
 }
 
+@keyframes incorrect {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateX(-10%) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(10%) rotate(5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+.incorrect-guess {
+  animation: .25s 2 incorrect;
+  background-color: red;
+  transform-origin: bottom center;
+}
+
 .card-display {
   color: white;
   text-align: center;
