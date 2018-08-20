@@ -191,11 +191,51 @@ body {
   margin: auto;
 }
 
+#game-over {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+#game-stats {
+  font: lighter 12pt sans-serif;
+  margin-top: 0;
+}
+
+#play-again {
+  font: 16pt sans-serif;
+}
+
+.button {
+  color: white;
+  background-color: mediumaquamarine;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
 h1 {
   margin: 0;
   font: 20pt sans-serif;
   text-align: center;
   text-transform: uppercase;
+}
+
+h2 {
+  font: 20pt sans-serif;
+  margin-bottom: 6pt;
 }
 
 @media screen and (min-width: 600px) {

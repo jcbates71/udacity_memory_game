@@ -1,7 +1,7 @@
 const symbolList = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#9734;', '&#9742;', '&#9742;', '&#9850;', '&#9850;', '&#9775;', '&#9775;', '&#9816;', '&#9816;', '&#9836;', '&#9836;'];
 const cardList = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 var cardLocations;
-var score;
+var score, starCount;
 var startTime, currentTime, myTimer;
 var selected = document.getElementsByClassName('selected');
 
@@ -16,15 +16,35 @@ function reset() {
 function setScore(newScore) {
   score = newScore;
   document.getElementById('score-number').textContent = score;
-  var star_html;
+  document.getElementById('score-stars').innerHTML = getStarHtml();
+}
+
+function getStarHtml() {
   if (score < 6) {
-    star_html = "<span class='good-stars'>&#9733;&#9733;&#9733;</span>";
+    starCount = 3;
   } else if (score < 11) {
-    star_html = "<span class='good-stars'>&#9733;&#9733;</span>&#9733;";
+    starCount = 2;
   } else {
-    star_html = "<span class='good-stars'>&#9733;</span>&#9733;&#9733;";
+    starCount = 1;
   }
-  document.getElementById('score-stars').innerHTML = star_html;
+  var starHtml = '<span class="good-stars">';
+  for (var i = 1; i < 4; i++) {
+    starHtml += '&#9733;';
+    if (i == starCount) {
+      starHtml += '</span>'
+    }
+  }
+  return starHtml;
+}
+
+function getStatText(number, units) {
+  var plural;
+  if (number == 1) {
+    plural = "";
+  } else {
+    plural = "s";
+  }
+  return number + " " + units + plural
 }
 
 function flipAllCardsToBack() {
@@ -51,6 +71,36 @@ function shuffleCards() {
 function turnOffGameWinners() {
   document.getElementById('game-board').classList.remove('board-winner');
   document.getElementById('reset-button').classList.remove('reset-winner');
+  const gameOverScreen = document.getElementById('game-over');
+  if (gameOverScreen) {
+    document.getElementsByTagName('body')[0].removeChild(gameOverScreen);
+  }
+}
+
+function addGameOver() {
+  const gameOverPage = document.createElement('div');
+  gameOverPage.id = 'game-over';
+  const gameOverHeader = document.createElement('h2');
+  gameOverHeader.innerText = 'Congratulations! You won!';
+  gameOverPage.appendChild(gameOverHeader);
+  const gameOverStats = document.createElement('p');
+  gameOverStats.id = 'game-stats';
+  gameOverStats.innerHTML = '<span id="move-count"></span> and <span id="star-count"></span>';
+  gameOverPage.appendChild(gameOverStats);
+  const playAgainButton = document.createElement('div');
+  playAgainButton.id = 'play-again';
+  playAgainButton.addEventListener('click', reset);
+  const playAgainText = document.createElement('p');
+  playAgainText.innerHTML = '<span class="button">Play again?</span>';
+  playAgainButton.appendChild(playAgainText);
+  gameOverPage.appendChild(playAgainButton);
+  document.getElementsByTagName('body')[0].appendChild(gameOverPage);
+  calculateStats();
+}
+
+function calculateStats() {
+  document.getElementById('move-count').innerText = getStatText(score, 'move');
+  document.getElementById('star-count').innerText = getStatText(starCount, 'star');
 }
 
 function selectCard(e) {
@@ -94,7 +144,7 @@ function finishFlipCard(e) {
         setTimeout(checkSelectedCards, 750);
         checkGameOver();
       }
-    } 
+    }
   }
 }
 
@@ -117,6 +167,7 @@ function checkGameOver() {
     clearInterval(myTimer);
     flashGameBoard();
     animateResetButton();
+    addGameOver();
   }
 }
 
