@@ -20,9 +20,9 @@ function setScore(newScore) {
 }
 
 function getStarHtml() {
-  if (score < 6) {
+  if (score < 13) {
     starCount = 3;
-  } else if (score < 11) {
+  } else if (score < 22) {
     starCount = 2;
   } else {
     starCount = 1;
