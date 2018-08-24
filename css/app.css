@@ -258,8 +258,21 @@ h2 {
   .card-display {
     font-size: 40pt
   }
+
+  #game-stats {
+    font-size: 16pt
+  }
+
+  #play-again {
+    font-size: 20pt
+  }
+
   h1 {
     font-size: 25pt;
     margin: .25em;
+  }
+
+  h2 {
+    font-size: 24pt
   }
 }
