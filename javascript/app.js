@@ -70,7 +70,6 @@ function shuffleCards() {
 
 function turnOffGameWinners() {
   document.getElementById('game-board').classList.remove('board-winner');
-  document.getElementById('reset-button').classList.remove('reset-winner');
   const gameOverScreen = document.getElementById('game-over');
   if (gameOverScreen) {
     document.getElementsByTagName('body')[0].removeChild(gameOverScreen);
@@ -166,17 +165,12 @@ function checkGameOver() {
   if (document.getElementsByClassName('back').length == 0) {
     clearInterval(myTimer);
     flashGameBoard();
-    animateResetButton();
-    addGameOver();
+    setTimeout(addGameOver, 2500);
   }
 }
 
 function flashGameBoard() {
   document.getElementById('game-board').classList.add('board-winner');
-}
-
-function animateResetButton() {
-  document.getElementById('reset-button').classList.add('reset-winner');
 }
 
 function updateTimer() {
