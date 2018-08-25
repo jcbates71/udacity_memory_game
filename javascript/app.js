@@ -1,9 +1,9 @@
-const symbolList = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#9734;', '&#9742;', '&#9742;', '&#9850;', '&#9850;', '&#9775;', '&#9775;', '&#9816;', '&#9816;', '&#9836;', '&#9836;'];
-const cardList = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
-var cardLocations;
-var score, starCount;
-var startTime, currentTime, myTimer;
-var selected = document.getElementsByClassName('selected');
+const SYMBOL_LIST = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#9734;', '&#9742;', '&#9742;', '&#9850;', '&#9850;', '&#9775;', '&#9775;', '&#9816;', '&#9816;', '&#9836;', '&#9836;'];
+const CARD_LIST = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
+let cardLocations;
+let score, starCount;
+let startTime, currentTime, myTimer;
+let selected = document.getElementsByClassName('selected');
 
 function reset() {
   setScore(0);
@@ -27,32 +27,27 @@ function getStarHtml() {
   } else {
     starCount = 1;
   }
-  var starHtml = '<span class="good-stars">';
-  for (var i = 1; i < 4; i++) {
+  let starHtml = '<span class="good-stars">';
+  for (let i = 1; i < 4; i++) {
     starHtml += '&#9733;';
     if (i == starCount) {
-      starHtml += '</span>'
+      starHtml += '</span><span class="bad-stars">';
     }
   }
+  starHtml += '</span>';
   return starHtml;
 }
 
 function getStatText(number, units) {
-  var plural;
-  if (number == 1) {
-    plural = "";
-  } else {
-    plural = "s";
-  }
-  return number + " " + units + plural
+  return number + ' ' + units + (number == 1 ? '' : 's');
 }
 
 function flipAllCardsToBack() {
-  var cardDisplays = document.getElementsByClassName('card-display');
+  let cardDisplays = document.getElementsByClassName('card-display');
   for (let display of cardDisplays) {
-    display.textContent = "?";
+    display.textContent = '?';
   }
-  var allCards = document.getElementsByClassName('card');
+  let allCards = document.getElementsByClassName('card');
   for (let card of allCards) {
     card.classList.remove('selected', 'matched');
     card.classList.add('back');
@@ -61,39 +56,39 @@ function flipAllCardsToBack() {
 
 function shuffleCards() {
   cardLocations = new Map();
-  var unusedCards = symbolList.slice();
-  for (let card of cardList) {
-    var randomCard = Math.floor(Math.random() * unusedCards.length);
+  let unusedCards = SYMBOL_LIST.slice();
+  for (let card of CARD_LIST) {
+    let randomCard = Math.floor(Math.random() * unusedCards.length);
     cardLocations.set(card, unusedCards.splice(randomCard, 1)[0]);
   }
 }
 
 function turnOffGameWinners() {
   document.getElementById('game-board').classList.remove('board-winner');
-  const gameOverScreen = document.getElementById('game-over');
-  if (gameOverScreen) {
-    document.getElementsByTagName('body')[0].removeChild(gameOverScreen);
+  const GAME_OVER_SCREEN = document.getElementById('game-over');
+  if (GAME_OVER_SCREEN) {
+    document.getElementsByTagName('body')[0].removeChild(GAME_OVER_SCREEN);
   }
 }
 
 function addGameOver() {
-  const gameOverPage = document.createElement('div');
-  gameOverPage.id = 'game-over';
-  const gameOverHeader = document.createElement('h2');
-  gameOverHeader.innerText = 'Congratulations! You won!';
-  gameOverPage.appendChild(gameOverHeader);
-  const gameOverStats = document.createElement('p');
-  gameOverStats.id = 'game-stats';
-  gameOverStats.innerHTML = '<span id="move-count"></span> and <span id="star-count"></span>';
-  gameOverPage.appendChild(gameOverStats);
-  const playAgainButton = document.createElement('div');
-  playAgainButton.id = 'play-again';
-  playAgainButton.addEventListener('click', reset);
-  const playAgainText = document.createElement('p');
-  playAgainText.innerHTML = '<span class="button">Play again?</span>';
-  playAgainButton.appendChild(playAgainText);
-  gameOverPage.appendChild(playAgainButton);
-  document.getElementsByTagName('body')[0].appendChild(gameOverPage);
+  const GAME_OVER_PAGE = document.createElement('div');
+  GAME_OVER_PAGE.className = 'game-over';
+  const GAME_OVER_HEADER = document.createElement('h2');
+  GAME_OVER_HEADER.innerText = 'Congratulations! You won!';
+  GAME_OVER_PAGE.appendChild(GAME_OVER_HEADER);
+  const GAME_OVER_STATS = document.createElement('p');
+  GAME_OVER_STATS.className = 'game-stats';
+  GAME_OVER_STATS.innerHTML = '<span id="move-count"></span> and <span id="star-count"></span>';
+  GAME_OVER_PAGE.appendChild(GAME_OVER_STATS);
+  const PLAY_AGAIN_BUTTON = document.createElement('div');
+  PLAY_AGAIN_BUTTON.className = 'play-again';
+  PLAY_AGAIN_BUTTON.addEventListener('click', reset);
+  const PLAY_AGAIN_TEXT = document.createElement('p');
+  PLAY_AGAIN_TEXT.innerHTML = '<span class="button">Play again?</span>';
+  PLAY_AGAIN_BUTTON.appendChild(PLAY_AGAIN_TEXT);
+  GAME_OVER_PAGE.appendChild(PLAY_AGAIN_BUTTON);
+  document.getElementsByTagName('body')[0].appendChild(GAME_OVER_PAGE);
   calculateStats();
 }
 
@@ -109,7 +104,7 @@ function selectCard(e) {
   if (selected.length == 2) {
     return;
   }
-  var selectedCard = e.target;
+  let selectedCard = e.target;
   if (selectedCard.className == 'card-display') {
     selectedCard = selectedCard.parentElement;
   }
@@ -125,7 +120,7 @@ function flipCard(selectedCard) {
 function finishFlipCard(e) {
   if (e.target.classList.contains('card')) {
     if (e.animationName == 'flip-to') {
-      var newCardDisplay, oldClass, newClass;
+      let newCardDisplay, oldClass, newClass;
       if (e.target.classList.contains('incorrect-guess')) {
         newCardDisplay = '?';
         oldClass = 'incorrect-guess';
@@ -148,16 +143,10 @@ function finishFlipCard(e) {
 }
 
 function checkSelectedCards() {
-  var matched = cardLocations.get(selected[0].id) == cardLocations.get(selected[1].id);
-  var newClass;
-  if (matched) {
-    newClass = 'matched';
-  } else {
-    newClass = 'incorrect-guess';
-  }
+  let matched = cardLocations.get(selected[0].id) == cardLocations.get(selected[1].id);
   setScore(score + 1);
   while (selected.length > 0) {
-    selected[0].classList.replace('selected', newClass);
+    selected[0].classList.replace('selected', matched ? 'matched' : 'incorrect-guess');
   }
 }
 
@@ -176,13 +165,13 @@ function flashGameBoard() {
 function updateTimer() {
   if (startTime) {
     currentTime = new Date();
-    var duration = Math.floor((currentTime - startTime) / 1000);
-    var minutes = String(Math.floor(duration / 60));
-    var seconds = String(duration % 60);
+    let duration = Math.floor((currentTime - startTime) / 1000);
+    let minutes = String(Math.floor(duration / 60));
+    let seconds = String(duration % 60);
     if (seconds.length == 1) {
-      seconds = "0" + seconds;
+      seconds = '0' + seconds;
     }
-    var timerText = minutes + ":" + seconds;
+    let timerText = minutes + ':' + seconds;
     document.getElementById('timer').innerText = timerText;
   }
 }

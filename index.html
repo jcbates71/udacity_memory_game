@@ -6,22 +6,22 @@
     <title>Bates's Memory Game</title>
     <link rel="stylesheet" href="css/app.css">
     <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
-    <script src="javascript/app.js" charset="utf-8"></script>
+    <script src="javascript/app.js"></script>
   </head>
   <body>
     <h1>Memory Game</h1>
-    <div id="control">
-      <div id="score">
-        <p><span id="score-stars"></span> Moves: <span id="score-number"></span></p>
+    <div class="control">
+      <div class="control-section">
+        <p class="control-text" class="stars"><span id="score-stars"></span> Moves: <span id="score-number"></span></p>
       </div>
-      <div>
-        <p id="timer">0:00</p>
+      <div class="control-section">
+        <p id="timer" class="control-text">0:00</p>
       </div>
-      <div id="reset-button">
-        <p>Reset</p>
+      <div id="reset-button" class="control-section">
+        <p class="control-text">Reset</p>
       </div>
     </div>
-    <div id="game-board">
+    <div id="game-board" class="board">
       <div class="board-row">
         <div class="card back" id="1-1">
           <p class="card-display">?</p>
