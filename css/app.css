@@ -179,6 +179,15 @@ body {
   margin: auto;
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 #game-over {
   position: absolute;
   left: 0;
@@ -192,6 +201,7 @@ body {
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  animation: 0.25s fade-in;
 }
 
 #game-stats {
