@@ -220,7 +220,7 @@ h1 {
   }
 }
 
-.game-over {
+.end-screen {
   /* The game over screen. */
   position: absolute;
   left: 0;

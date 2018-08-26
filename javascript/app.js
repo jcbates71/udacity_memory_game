@@ -73,7 +73,8 @@ function turnOffGameWinners() {
 
 function addGameOver() {
   const GAME_OVER_PAGE = document.createElement('div');
-  GAME_OVER_PAGE.className = 'game-over';
+  GAME_OVER_PAGE.className = 'end-screen';
+  GAME_OVER_PAGE.id = 'game-over';
   const GAME_OVER_HEADER = document.createElement('h2');
   GAME_OVER_HEADER.innerText = 'Congratulations! You won!';
   GAME_OVER_PAGE.appendChild(GAME_OVER_HEADER);
