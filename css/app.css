@@ -210,7 +210,8 @@ h1 {
 /* Game over */
 
 @keyframes fade-in {
-  /* A quick fade-in animation for the game over screen. */
+  /* A quick fade-in animation for the game over screen.
+  Not entirely in love with it, but I'm leaving it.*/
   from {
     opacity: 0;
   }

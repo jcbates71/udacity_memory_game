@@ -6,6 +6,7 @@ let startTime, currentTime, myTimer;
 let selected = document.getElementsByClassName('selected');
 
 function reset() {
+  // Wipes out all progress.
   setScore(0);
   flipAllCardsToBack();
   shuffleCards();
@@ -15,12 +16,14 @@ function reset() {
 }
 
 function setScore(newScore) {
+  // Sets the score variable and updates display.
   score = newScore;
   document.getElementById('score-number').textContent = score;
   document.getElementById('score-stars').innerHTML = getStarHtml();
 }
 
 function getStarHtml() {
+  // Calculates the number of starts based on the score and creates the html.
   if (score < 13) {
     starCount = 3;
   } else if (score < 22) {
@@ -40,10 +43,13 @@ function getStarHtml() {
 }
 
 function getStatText(number, units) {
+  // Creates the text for displaying an end-game stat.
   return number + ' ' + units + (number == 1 ? '' : 's');
 }
 
 function flipAllCardsToBack() {
+  // Flips all cards to their backs by remplacing all card classes with back
+  // and setting each's display text to "?".
   let cardDisplays = document.getElementsByClassName('card-display');
   for (let display of cardDisplays) {
     display.textContent = '?';
@@ -56,6 +62,7 @@ function flipAllCardsToBack() {
 }
 
 function shuffleCards() {
+  // Randomly determines where each symbol appears on the board.
   cardLocations = new Map();
   let unusedCards = SYMBOL_LIST.slice();
   for (let card of CARD_LIST) {
@@ -65,6 +72,7 @@ function shuffleCards() {
 }
 
 function turnOffGameWinners() {
+  // Removes classes and html added after winning the game.
   document.getElementById('game-board').classList.remove('board-winner');
   const GAME_OVER_SCREEN = document.getElementById('game-over');
   if (GAME_OVER_SCREEN) {
@@ -73,6 +81,7 @@ function turnOffGameWinners() {
 }
 
 function addGameOver() {
+  // Creates the end game html.
   const GAME_OVER_PAGE = document.createElement('div');
   GAME_OVER_PAGE.className = 'end-screen';
   GAME_OVER_PAGE.id = 'game-over';
@@ -95,25 +104,28 @@ function addGameOver() {
 }
 
 function calculateStats() {
+  // Adds the stats to the end game screen.
   document.getElementById('move-count').innerText = getStatText(score, 'move');
   document.getElementById('star-count').innerText = getStatText(starCount, 'star');
 }
 
 function startTimer() {
+  // Captures the current time and sets the timer for continuous updating.
   startTime = new Date();
   myTimer = setInterval(updateTimer, 100);
 }
 
 function selectCard(e) {
+  // Event handler triggered when a card is selected.
   if (!startTime) {
-    startTimer();
+    startTimer(); // Timer starts when the user selects their first card.
   }
   if (selected.length == 2) {
-    return;
+    return; // If the user already has two cards selected, more cannot be selected until the script is done processing them.
   }
   let selectedCard = e.target;
   if (selectedCard.className == 'card-display') {
-    selectedCard = selectedCard.parentElement;
+    selectedCard = selectedCard.parentElement; // Make the target the card, if the text inside the card is clicked.
   }
   if (selectedCard.className == 'card back') {
     flipCard(selectedCard);
@@ -121,18 +133,24 @@ function selectCard(e) {
 }
 
 function flipCard(selectedCard) {
+  // Triggers the card flip animation.
   selectedCard.classList.add('card-flip');
 }
 
 function finishFlipCard(e) {
+  // Adjusts card classes and invokes functions during and after a card flip.
   if (e.target.classList.contains('card')) {
     if (e.animationName == 'flip-to') {
+      // Halfway through the flip.
+      // Replacing classes and text to make the card look like it's being flipped over.
       let newCardDisplay, oldClass, newClass;
       if (e.target.classList.contains('incorrect-guess')) {
+        // Card is being flipped back after an incorrect guess.
         newCardDisplay = '?';
         oldClass = 'incorrect-guess';
         newClass = 'back';
       } else {
+        // User is flipping the card over.
         newCardDisplay = cardLocations.get(e.target.id);
         oldClass = 'back';
         newClass = 'selected';
@@ -140,8 +158,10 @@ function finishFlipCard(e) {
       e.target.getElementsByClassName('card-display')[0].innerHTML = newCardDisplay;
       e.target.classList.replace(oldClass, newClass);
     } else if (e.animationName == 'flip-back') {
+      // Completing the flip.
       e.target.classList.remove('card-flip');
       if (selected.length == 2) {
+        // If the user has selected two cards, check for a match and check if the game is over.
         setTimeout(checkSelectedCards, 750);
         checkGameOver();
       }
@@ -150,6 +170,7 @@ function finishFlipCard(e) {
 }
 
 function checkSelectedCards() {
+  // Checks whether the two cards flipped over match.
   let matched = cardLocations.get(selected[0].id) == cardLocations.get(selected[1].id);
   setScore(score + 1);
   while (selected.length > 0) {
@@ -158,6 +179,7 @@ function checkSelectedCards() {
 }
 
 function checkGameOver() {
+  // Runs game over functions if no unmatched cards remain.
   if (document.getElementsByClassName('back').length == 0) {
     stopTimer()
     flashGameBoard();
@@ -166,15 +188,18 @@ function checkGameOver() {
 }
 
 function stopTimer() {
+  // Stops the timer for when the game is finished.
   clearInterval(myTimer);
   startTime = false;
 }
 
 function flashGameBoard() {
+  // Game board flashes briefly when the game has been won.
   document.getElementById('game-board').classList.add('board-winner');
 }
 
 function updateTimer() {
+  // Updates the timer in the control bar.
   if (startTime) {
     currentTime = new Date();
     let duration = Math.floor((currentTime - startTime) / 1000);
@@ -189,12 +214,14 @@ function updateTimer() {
 }
 
 function addEventListeners() {
+  // Adds all of the game's event listeners.
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board').addEventListener('click', selectCard);
   document.getElementById('game-board').addEventListener('animationend', finishFlipCard);
 }
 
 function main() {
+  // Starts the game.
   reset();
   addEventListeners();
 }
