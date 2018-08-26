@@ -50,6 +50,8 @@ h1 {
   color: gold;
 }
 
+/* Game board */
+
 .board {
   display: flex;
   flex-direction: column;
@@ -62,8 +64,6 @@ h1 {
   padding: 0.5em;
   margin: auto;
 }
-
-/* Game board */
 
 @keyframes flashing-board {
   /* Flashes the board from blue to red.  Used after the game has been won. */
@@ -150,7 +150,8 @@ h1 {
 }
 
 @keyframes correct {
-  /* A jelly-like stretching effect for when a match has been made. */
+  /* A jelly-like stretching effect for when a match has been made.
+  Based off of Udacity's example. */
   0% {
     transform-origin: center;
     transform: scale(1,1);
@@ -174,7 +175,8 @@ h1 {
 }
 
 @keyframes incorrect {
-  /* A horizontal shaking animation for when an incorrect match has been made. */
+  /* A horizontal shaking animation for when an incorrect match has been made.
+  Based off of Udacity's example. */
   0% {
     transform: translateX(0) rotate(0);
   }
@@ -210,8 +212,7 @@ h1 {
 /* Game over */
 
 @keyframes fade-in {
-  /* A quick fade-in animation for the game over screen.
-  Not entirely in love with it, but I'm leaving it.*/
+  /* A quick fade-in animation for the game over screen.*/
   from {
     opacity: 0;
   }
