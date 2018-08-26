@@ -10,6 +10,7 @@ function reset() {
   flipAllCardsToBack();
   shuffleCards();
   turnOffGameWinners();
+  stopTimer();
   document.getElementById('timer').innerText = '0:00';
 }
 
@@ -98,9 +99,14 @@ function calculateStats() {
   document.getElementById('star-count').innerText = getStatText(starCount, 'star');
 }
 
+function startTimer() {
+  startTime = new Date();
+  myTimer = setInterval(updateTimer, 100);
+}
+
 function selectCard(e) {
   if (!startTime) {
-    startTime = new Date();
+    startTimer();
   }
   if (selected.length == 2) {
     return;
@@ -153,10 +159,15 @@ function checkSelectedCards() {
 
 function checkGameOver() {
   if (document.getElementsByClassName('back').length == 0) {
-    clearInterval(myTimer);
+    stopTimer()
     flashGameBoard();
     setTimeout(addGameOver, 2500);
   }
+}
+
+function stopTimer() {
+  clearInterval(myTimer);
+  startTime = false;
 }
 
 function flashGameBoard() {
@@ -181,7 +192,6 @@ function addEventListeners() {
   document.getElementById('reset-button').addEventListener('click', reset);
   document.getElementById('game-board').addEventListener('click', selectCard);
   document.getElementById('game-board').addEventListener('animationend', finishFlipCard);
-  myTimer = setInterval(updateTimer, 100);
 }
 
 function main() {
