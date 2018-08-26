@@ -1,7 +1,6 @@
-// TODO: Rewrite shuffle cards to randomly select from a larger list of symbols.
 // TODO: Time needs to be added to the game over screen.
 
-const SYMBOL_LIST = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#9734;', '&#9742;', '&#9742;', '&#9850;', '&#9850;', '&#9775;', '&#9775;', '&#9816;', '&#9816;', '&#9836;', '&#9836;'];
+const SYMBOL_LIST = ['&#9730;', '&#9731;', '&#9734;', '&#9742;', '&#9850;', '&#9775;', '&#9816;', '&#9836;', '&#9824;', '&#9754;', '&#9782;', '&#9789;', '&#9860;', '&#9786;', '&#9799;'];
 const CARD_LIST = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 let cardLocations;
 let score, starCount;
@@ -24,11 +23,24 @@ function addEventListeners() {
 function shuffleCards() {
   // Randomly determines where each symbol appears on the board.
   cardLocations = new Map();
-  let unusedCards = SYMBOL_LIST.slice();
+  let unusedCards = getDeck();
   for (let card of CARD_LIST) {
     let randomCard = Math.floor(Math.random() * unusedCards.length);
     cardLocations.set(card, unusedCards.splice(randomCard, 1)[0]);
   }
+}
+
+function getDeck() {
+  // Randomly picks eight symbols for the deck.
+  // A changing deck should make games more challenging.
+  let myDeck = [];
+  while (myDeck.length < 16) {
+    let randomNumber = Math.floor(Math.random() * SYMBOL_LIST.length);
+    if (!myDeck.includes(SYMBOL_LIST[randomNumber])) {
+      myDeck = myDeck.concat(SYMBOL_LIST[randomNumber], SYMBOL_LIST[randomNumber]);
+    }
+  }
+  return myDeck;
 }
 
 function selectCard(e) {
