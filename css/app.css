@@ -294,6 +294,10 @@ h2 {
     font-size: 20pt;
   }
 
+  .button {
+    padding: 10pt;
+  }
+
   h1 {
     font-size: 25pt;
     margin: 0.25em;
@@ -301,5 +305,23 @@ h2 {
 
   h2 {
     font-size: 24pt;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  h2 {
+    font-size: 36pt;
+  }
+
+  .game-stats {
+    font-size: 24pt;
+  }
+
+  .play-again {
+    font-size: 30pt;
+  }
+
+  .button {
+    padding: 10pt;
   }
 }
