@@ -1,3 +1,6 @@
+// TODO: Rewrite shuffle cards to randomly select from a larger list of symbols.
+// TODO: Time needs to be added to the game over screen.
+
 const SYMBOL_LIST = ['&#9730;', '&#9730;', '&#9731;', '&#9731;', '&#9734;', '&#9734;', '&#9742;', '&#9742;', '&#9850;', '&#9850;', '&#9775;', '&#9775;', '&#9816;', '&#9816;', '&#9836;', '&#9836;'];
 const CARD_LIST = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 let cardLocations;
