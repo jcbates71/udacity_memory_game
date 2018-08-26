@@ -1,5 +1,3 @@
-// TODO: Time needs to be added to the game over screen.
-
 const SYMBOL_LIST = ['&#9730;', '&#9731;', '&#9734;', '&#9742;', '&#9850;', '&#9775;', '&#9816;', '&#9836;', '&#9824;', '&#9754;', '&#9782;', '&#9789;', '&#9860;', '&#9786;', '&#9799;'];
 const CARD_LIST = ['1-1', '1-2', '1-3', '1-4', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '4-1', '4-2', '4-3', '4-4'];
 let cardLocations;
@@ -208,7 +206,7 @@ function addGameOver() {
   GAME_OVER_PAGE.appendChild(GAME_OVER_HEADER);
   const GAME_OVER_STATS = document.createElement('p');
   GAME_OVER_STATS.className = 'game-stats';
-  GAME_OVER_STATS.innerHTML = '<span id="move-count"></span> and <span id="star-count"></span>';
+  GAME_OVER_STATS.innerHTML = '<span id="move-count"></span> and <span id="star-count"></span><br>Time: <span id="final-time"></span>';
   GAME_OVER_PAGE.appendChild(GAME_OVER_STATS);
   const PLAY_AGAIN_BUTTON = document.createElement('div');
   PLAY_AGAIN_BUTTON.className = 'play-again';
@@ -225,6 +223,7 @@ function calculateStats() {
   // Adds the stats to the end game screen.
   document.getElementById('move-count').innerText = getStatText(score, 'move');
   document.getElementById('star-count').innerText = getStatText(starCount, 'star');
+  document.getElementById('final-time').innerText = document.getElementById('timer').innerText;
 }
 
 function getStatText(number, units) {
